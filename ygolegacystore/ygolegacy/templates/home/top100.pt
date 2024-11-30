@@ -1,0 +1,32 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+
+        <div class="container" tal:condition="not user_id">
+            <div class="content">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"> Submit </button>
+                </form>
+            </div>
+        </div>
+
+         <div style="text-align: center;">
+            <a href="${endpoint}?hours=24"><button class="btn">24H</button></a>
+            <a href="${endpoint}?hours=72"><button class="btn">3 Days</button></a>
+            <a href="${endpoint}?hours=168"><button class="btn">7 Days</button></a>
+        </div>
+
+
+        <div class="container" style="margin: auto;">
+            <h1 style="color: #8d8a8b;text-align: center;font-weight: bold;font-family:MyriadProSB;">${title} - In Last ${hours} Hours</h1>
+        </div>
+        <div id="saved" tal:condition="content">${structure:content}</div>
+        <div id="results" tal:condition="user_id"></div>
+
+
+        </div>
+
+</div>

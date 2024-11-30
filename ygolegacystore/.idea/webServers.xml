@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b85cf8ff-446d-4642-9d8e-22fa16a1683d" name="ygolegacystore_server" url="http://142.44.136.176">
+        <fileTransfer host="142.44.136.176" port="22" rootFolder="/apps/app_repo/ygolegacy" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

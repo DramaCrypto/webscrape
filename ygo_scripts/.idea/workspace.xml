@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5554877-e8f0-4b4a-adde-3c87b1f315d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ygo-scraper/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ygo-scraper/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygo-scraper/price_update_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/ygo-scraper/price_update_new.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygo-scraper/scrapers/ebay.py" beforeDir="false" afterPath="$PROJECT_DIR$/ygo-scraper/scrapers/ebay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ygo-scraper/scrapers/tcgplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/ygo-scraper/scrapers/tcgplayer.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ygo-scraper" />
+  </component>
+  <component name="ProjectId" id="1YKAqoyv7n6J8InEb1EuUAm1kZE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ygolegacystore" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5554877-e8f0-4b4a-adde-3c87b1f315d8" name="Default Changelist" comment="" />
+      <created>1582681105643</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582681105643</updated>
+      <workItem from="1582681106800" duration="610000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2660" y="276" key="FileChooserDialogImpl" timestamp="1582681731426">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582681731426" />
+  </component>
+</project>

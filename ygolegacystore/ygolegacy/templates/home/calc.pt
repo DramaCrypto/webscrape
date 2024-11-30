@@ -1,0 +1,29 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+        <div tal:condition="value" style="text-align: center;">
+            <a href="/live/binder-value?currency=USD"><button class="btn">USD</button></a>
+            <a href="/live/binder-value?currency=CAD"><button class="btn">CAD</button></a>
+        </div>
+
+        <div class="container" style="color: #6c6f73; max-width:700px">
+            <div class="container">
+                <h1>Total Cards: ${"$" + str(data['total']) if value else data['total']}</h1>
+
+            </div>
+
+
+                <section tal:repeat="lst cats" class="sect1" style="border-bottom:3px solid goldenrod; padding:20px 30px 15px 30px">
+                    <h4 tal:repeat="item data[lst].items()" style="color: #6c6f73;">${item[0]}: ${"$" + str(item[1]) if value else item[1]}</h4>
+                </section>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+</div>

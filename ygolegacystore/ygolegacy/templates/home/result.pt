@@ -1,0 +1,25 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+
+        <div class="container" tal:condition="not user_id">
+            <div class="content">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"> Submit </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container" style="margin: auto;">
+            <h1 tal:condition="buylist" style="color: #8d8a8b;text-align: center;font-weight: bold;font-family:MyriadProSB;">Wish List</h1>
+        </div>
+        <div id="saved" tal:condition="content">${structure:content}</div>
+        <div id="results" tal:condition="user_id"></div>
+
+
+        </div>
+
+</div>

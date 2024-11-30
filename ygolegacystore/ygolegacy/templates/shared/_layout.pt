@@ -1,0 +1,558 @@
+<!DOCTYPE html metal:define-macro="layout">
+<html lang="${request.locale_name}">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="pyramid web application">
+    <meta name="author" content="Pylons Project">
+
+    <link rel="shortcut icon" type="image/png" href="${request.static_url('ygolegacy:static/image/favicon.png')}"/>
+    <title>YGOLegacy</title>
+
+
+
+    <link rel="stylesheet" href="${request.static_url('ygolegacy:static/css/bootstrap.min.css')}">
+    <link rel="stylesheet" href="${request.static_url('ygolegacy:static/css/style.css')}">
+    <link rel="stylesheet" href="${request.static_url('ygolegacy:static/css/font-awesome.min.css')}">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="${request.static_url('ygolegacy:static/js/buylistSearch.js')}"></script>
+    <script src="${request.static_url('ygolegacy:static/js/updateInventory.js')}"></script>
+    <script src="${request.static_url('ygolegacy:static/js/showBuylistResult.js')}"></script>
+
+    <script type="text/javascript">
+        function openInNewTab(url) {
+          var win = window.open(url, '_blank');
+          win.focus();
+        }
+
+
+
+        //  end
+  //       $(document).ready(function(){
+  //           $("#results").hide();
+  //
+  //
+  //           //$( "#searchbar" ).keyup(function( event ) {
+  //            $('#set-code-box, #searchbar').on('keyup change', function (event) {
+  //
+  //               var inputVal = $('#searchbar').val();
+  //               var setCodeVal = "";
+  //                       console.log('test', inputVal);
+  //               if(inputVal.length<1){
+  //                   $("#results").hide();
+  //               }
+  //               else{
+  //                   $("#results").show();
+  //                   if (window.XMLHttpRequest) {
+  //                       // code for IE7+, Firefox, Chrome, Opera, Safari
+  //                       xmlhttp = new XMLHttpRequest();
+  //                   } else {
+  //                       // code for IE6, IE5
+  //                       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  //                   }
+  //                   xmlhttp.onreadystatechange = function() {
+  //
+  //                       if (this.readyState == 4 && this.status == 200) {
+  //                           if ($('#cards').length > 0) {
+  //                                 document.getElementById("cards").innerHTML = "";
+  //                               }
+  //                           if ($('#saved').length > 0) {
+  //                               document.getElementById("saved").innerHTML = "";
+  //                           }
+  //                           document.getElementById("results").innerHTML = this.responseText;
+  //
+  //                       }
+  //                   };
+  //
+  //                   if (document.getElementById('set-code-box').checked) {
+  //                       setCodeVal = "1";
+  //                   } else {
+  //                       setCodeVal = "0";
+  //                   }
+  //                   xmlhttp.open("GET","/live/result?term="+inputVal+"&set_code="+setCodeVal,true);
+  //                   xmlhttp.send();
+  //               }
+  //           });
+  // });
+
+
+
+        $(document).ready(function(){
+        $("#results").hide();
+
+        $( "#ebaysearch" ).keyup(function( event ) {
+            var inputVal = $(this).val();
+            if(inputVal.length<1){
+                $("#results").hide();
+            }
+            else{
+                $("#results").show();
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+
+                    if (this.readyState == 4 && this.status == 200) {
+                        if ($('#cards').length > 0) {
+                              document.getElementById("cards").innerHTML = "";
+                            }
+                        if ($('#saved').length > 0) {
+                            document.getElementById("saved").innerHTML = "";
+                        }
+                        document.getElementById("results").innerHTML = this.responseText;
+
+                    }
+                };
+
+                xmlhttp.open("GET","/live/ebayResult?term="+inputVal,true);
+                xmlhttp.send();
+            }
+        });
+      });
+
+
+function updateValue(elem)
+        {
+            let element_id = elem.getAttribute('data-id');
+            let update_type = elem.getAttribute('update-type');
+            let label_id = 'inv-' + element_id
+            var value = parseInt(document.getElementById(label_id).textContent, 10);
+            value = isNaN(value) ? 0 : value;
+            if (update_type === "increment") {
+                value++;
+            } else {
+                value--;
+            }
+            if (value < 0) {
+                value = 0;
+            }
+
+
+            document.getElementById(label_id).textContent = value;
+            //document.getElementById("form-" + element_id).submit();
+            $.ajax("/live/inventory?card_id="+element_id+"&new_value="+value, function(result) {
+            console.log(result)
+        });
+        }
+    </script>
+
+
+    <style>
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #dfdfe2;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #4b4b4b;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #1e1e1e;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.navbar {
+    background-color: #211f1f !important;
+}
+
+
+.fav_button_faved i {
+    color: #bd301f;
+}
+
+.fav_button i {
+    color: #8d8a8b;
+}
+
+.fav_button i:hover {
+    color: #bd301f;
+}
+
+.fav_button_faved i:hover {
+    color: #8d8a8b;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+.scroll-top {
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  bottom: 25px;
+  left: 20px;
+  display: none;
+}
+.scroll-top i {
+  display: inline-block;
+  color: #fff;
+}
+
+.sec1  small {
+    font-size: 50%;
+}
+</style>
+
+    <script>
+        $(document).ready(function () {
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+      $('.scroll-top').fadeIn();
+    } else {
+      $('.scroll-top').fadeOut();
+    }
+  });
+
+  $('.scroll-top').click(function () {
+    $("html, body").animate({
+      scrollTop: 0
+    }, 100);
+      return false;
+  });
+
+});
+    </script>
+
+    <script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+function heartCard(element) {
+    // heart card
+    let itemID = element.getAttribute('item-id');
+    let uID = element.getAttribute('uid');
+    let itemValue = element.getAttribute('value')
+    let section = document.getElementById(uID);
+    let setCode =  section.getElementsByClassName('set_code')[0].innerHTML;
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+
+            if (data['msg'] == 'ok') {
+                element.setAttribute('class', data['class']);
+                element.setAttribute('value', data['new'])
+
+            }
+        }
+    };
+
+    xmlhttp.open("GET","/live/heart?id="+itemID+"&heart_value="+itemValue+"&set_code="+setCode,true);
+    xmlhttp.send();
+}
+
+function selectCondition(element) {
+    console.log('choseing conditione');
+    let itemID = element.getAttribute('item-id');
+    let cardID = element.getAttribute('card-id');
+    let condition = element.options[element.selectedIndex].text;
+
+    let editionDropdown = document.getElementById('edit' + itemID);
+    let edition = editionDropdown.options[editionDropdown.selectedIndex].text;
+
+    let section = document.getElementById(itemID);
+    let setCode =  section.getElementsByClassName('set_code')[0].innerHTML;
+
+
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+            if (data['msg'] == 'ok') {
+
+                let section = document.getElementById(itemID);
+
+
+                // fill prices
+                section.getElementsByClassName('tcg_cad')[0].innerHTML = data['tcg_cad'];
+                section.getElementsByClassName('tcg_usd')[0].innerHTML = data['tcg_usd'];
+                section.getElementsByClassName('ebayca_cad')[0].innerHTML = data['ebayca_cad'];
+                section.getElementsByClassName('ebayca_usd')[0].innerHTML = data['ebayca_usd'];
+                section.getElementsByClassName('ebaycom_cad')[0].innerHTML = data['ebaycom_cad'];
+                section.getElementsByClassName('ebaycom_usd')[0].innerHTML = data['ebaycom_usd'];
+                section.getElementsByClassName('buy_cad')[0].innerHTML = data['buy_cad'];
+                section.getElementsByClassName('buy_usd')[0].innerHTML = data['buy_usd'];
+
+                // inventory h5 tag
+                let h5 = section.getElementsByTagName('h5')[0];
+                h5.innerHTML = data['inventory'];
+                h5.setAttribute('id', 'inv-'+data['id']);
+                // inventory +/- buttons
+                let plusButton = section.getElementsByClassName('increment')[0];
+                plusButton.setAttribute('data-id', data['id']);
+
+                let minusButton = section.getElementsByClassName('decrement')[0];
+                minusButton.setAttribute('data-id', data['id']);
+
+                section.setAttribute('id', data['id']);
+
+
+                // select boxes
+                element.setAttribute('item-id', data['id']);
+                element.setAttribute('card-id', data['card_id']);
+                element.setAttribute('id', 'cond'+data['id']);
+                let secondBox = document.getElementById('edit'+itemID);
+                secondBox.setAttribute('id', 'edit'+data['id']);
+                secondBox.setAttribute('item-id', data['id']);
+                secondBox.setAttribute('card-id', data['card_id']);
+
+            }
+        }
+    };
+
+    xmlhttp.open("GET","/live/cards?card_id="+cardID+"&cond="+condition+"&edit="+edition+"&code="+setCode,true);
+    xmlhttp.send();
+}
+
+
+
+function selectEdition(element) {
+    let itemID = element.getAttribute('item-id');
+    let cardID = element.getAttribute('card-id');
+    let edition = element.options[element.selectedIndex].text;
+
+    let condDropdown = document.getElementById('cond' + itemID);
+    let condition = condDropdown.options[condDropdown.selectedIndex].text;
+    let section = document.getElementById(itemID);
+    let setCode =  section.getElementsByClassName('set_code')[0].innerHTML;
+
+
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+
+            if (data['msg'] == 'ok') {
+
+                let section = document.getElementById(itemID);
+                console.log(data);
+
+                // fill prices
+                section.getElementsByClassName('tcg_cad')[0].innerHTML = data['tcg_cad'];
+                section.getElementsByClassName('tcg_usd')[0].innerHTML = data['tcg_usd'];
+                section.getElementsByClassName('ebayca_cad')[0].innerHTML = data['ebayca_cad'];
+                section.getElementsByClassName('ebayca_usd')[0].innerHTML = data['ebayca_usd'];
+                section.getElementsByClassName('ebaycom_cad')[0].innerHTML = data['ebaycom_cad'];
+                section.getElementsByClassName('ebaycom_usd')[0].innerHTML = data['ebaycom_usd'];
+                section.getElementsByClassName('buy_cad')[0].innerHTML = data['buy_cad'];
+                section.getElementsByClassName('buy_usd')[0].innerHTML = data['buy_usd'];
+
+                // inventory h5 tag
+                let h5 = section.getElementsByTagName('h5')[0];
+                h5.innerHTML = data['inventory'];
+                h5.setAttribute('id', 'inv-'+data['id']);
+                // inventory +/- buttons
+                let plusButton = section.getElementsByClassName('increment')[0];
+                plusButton.setAttribute('data-id', data['id']);
+
+                let minusButton = section.getElementsByClassName('decrement')[0];
+                minusButton.setAttribute('data-id', data['id']);
+
+                section.setAttribute('id', data['id']);
+
+
+                // select boxes
+                element.setAttribute('item-id', data['id']);
+                element.setAttribute('card-id', data['card_id']);
+                element.setAttribute('id', 'edit'+data['id']);
+                let secondBox = document.getElementById('cond'+itemID);
+                secondBox.setAttribute('id', 'cond'+data['id']);
+                secondBox.setAttribute('item-id', data['id']);
+                secondBox.setAttribute('card-id', data['card_id']);
+
+                section.getElementsByClassName('edition')[0].innerHTML = edition;
+            }
+        }
+    };
+
+    xmlhttp.open("GET","/live/cards?card_id="+cardID+"&cond="+condition+"&edit="+edition+"&code="+setCode,true);
+    xmlhttp.send();
+
+
+}
+
+</script>
+
+
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/live">Yu-Gi-Oh! Singles Search</a>
+  <a href="/live/binder-value">Binder Value</a>
+  <a href="/live/stock-inventory">Stock Inventory</a>
+  <a href="/live/wishlist">Wishlist</a>
+  <a href="/live/ebay?group=0">eBay (no price)</a>
+  <a href="/live/ebay?group=1">eBay $10+</a>
+	<a href="/live/ebay?group=2">eBay $4 +1</a>
+	<a href="/live/ebay?group=3">eBay $4 +2</a>
+
+	<a href="/live/ebay?group=4">eBay $2+ 1</a>
+	<a href="/live/ebay?group=5">eBay $2 +2</a>
+	<a href="/live/ebay?group=6">eBay $2 +3</a>
+	<a href="/live/ebay?group=7">eBay 4</a>
+	<a href="/live/ebay?group=8">eBay 5</a>
+	<a href="/live/ebay?group=9">eBay 6</a>
+	<a href="/live/ebay?group=10">eBay 7</a>
+	<a href="/live/ebay?group=11">eBay 8</a>
+	<a href="/live/ebay?group=12">eBay 9</a>
+	<a href="/live/ebay?group=13">eBay 10</a>
+	<a href="/live/ebay?group=14">eBay 11</a>
+	<a href="/live/ebay?group=15">eBay 12</a>
+	<a href="/live/ebay?group=16">eBay 13</a>
+	<a href="/live/ebay?group=17">eBay 14</a>
+	<a href="/live/ebay?group=18">eBay 15</a>
+	<a href="/live/ebay?group=19">eBay 16</a>
+	<a href="/live/ebay?group=20">eBay 17</a>
+	<a href="/live/ebay?group=21">eBay 18</a>
+	<a href="/live/ebay?group=22">eBay 19</a>
+	<a href="/live/ebay?group=23">eBay 20</a>
+	<a href="/live/ebay?group=24">eBay 21</a>
+	<a href="/live/ebay?group=25">eBay 22</a>
+<!--?    <a href="/live/ebay?group=3">eBay $.95+</a>-->
+<!--?    <a href="/live/ebay?group=4">eBay $0+</a>-->
+
+  <a href="/live/enterInventory">Enter Inventory</a>
+
+  <a href="/live/trending?hours=24">Trending </a>
+  <a href="/live/top100?hours=24">Top100</a>
+  <a href="/live/marketwatch?hours=24">MarketWatch</a>
+  <a href="/live/buylist">Buylist</a>
+</div>
+
+ <nav class="navbar navbar-dark bg-dark">
+    <button onclick="openNav()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span style="color: #D1AA42" class="navbar-toggler-icon"></span>
+    </button>
+     <a class="navbar-brand" style="margin:auto" href="/live">
+    <img src="${request.static_url('ygolegacy:static/image/logo.png')}" width="300" height="80" class="d-inline-block align-top" alt="">
+  </a>
+  </nav>
+
+
+
+<div class="serch" tal:condition="search">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 pt-4">
+                <form class="example" action="" method="POST">
+                <!-- Set code checkbox for singles search -->
+                <div class="text-center" tal:condition="user_id and not ebay and not buylist" class="input-group" style="font-size: 200%;">
+                    <input tal:condition="main" type="checkbox" name="set_code_search" id="set-code-box" onclick="">
+                    <input tal:condition="inventory" type="checkbox" name="set_code_search" id="set-code-box-inv" onclick="">
+                    <input tal:condition="new_buylist" type="checkbox" name="set_code_search" id="set-code-box-buy" onclick="">
+                    <label style="color: white;" for="set-code-box">Set Code</label>
+                </div>
+                <!--  checkbox for singles search -->
+                <div tal:condition="user_id and buylist" class="input-group">
+                    <input type="checkbox" name="race_search" id="race-checkbox">
+                    <label style="color: white;" for="race-checkbox">Race</label>
+                    <input type="checkbox" name="type_search" id="type-checkbox">
+                    <label style="color: white;" for="type-checkbox">Type</label>
+                </div>
+                <div class="input-group">
+                    <!-- Singles searchbar -->
+                  <input tal:condition="user_id and main" name="search" id="searchbar" type="text" class="form-control" placeholder="Search for Yu-Gi-Oh! Cards" onclick="closeNav()">
+                    <!-- Buylist searchbar -->
+                    <input tal:condition="user_id and buylist and not new_buylist" name="search" id="buylist_searchbar" type="text" class="form-control" placeholder="Search for Yu-Gi-Oh! Cards" onclick="closeNav()">
+                    <!-- Inventory searchbar -->
+                    <input tal:condition="user_id and inventory and not new_buylist" name="search" id="inventory_searchbar" type="text" class="form-control" placeholder="Search for Yu-Gi-Oh! Cards" onclick="closeNav()">
+                    <!-- Inventory searchbar -->
+                    <input tal:condition="user_id and new_buylist" name="search" id="new_buylist_searchbar" type="text" class="form-control" placeholder="Search for Yu-Gi-Oh! Cards" onclick="closeNav()">
+
+
+
+                    <input tal:condition="not user_id" class="form-control" placeholder="Enter Password to Search" disabled>
+                    <div class="input-group-append">
+                     <button class="btn btnn" type="button">
+                     <i class="fa fa-search"></i>
+                     </button>
+                  </div>
+
+                </div>
+
+
+
+
+                </form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="starter-template">
+            <div metal:define-slot="content">No content</div>
+
+        </div>
+
+
+<button class="btn btn-primary scroll-top" data-scroll="up" type="button">
+<i class="fa fa-chevron-up"></i>
+</button>
+
+</body>
+</html>

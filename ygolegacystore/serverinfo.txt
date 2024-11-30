@@ -1,0 +1,13 @@
+Miniwebsite server
+
+Server:
+IP: 167.114.68.171
+host: vps261011.vps.ovh.ca
+user: root
+password: 5QF7W00x
+
+MySQL Database:
+Database: ygolegacy
+user: root
+password: Yo#Mn6NmcpQ
+
