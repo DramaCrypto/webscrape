@@ -1,0 +1,10 @@
+{
+    "UserName": "ElementTraders",
+    "Password": "2q9L2RZbTnCWXxG",
+    "Debug": true,
+	"Verbose": true,
+    "name": "Test",
+    "auth_key": "4f8eb06ec4772f5901885579f7eba0cb",
+    "secret_key": "8602f7fcc046696af3bb7244de73f1d09ee1d200f43fa0863603754c2ce95025",
+    "PaymentApiUrl": "http://www.ysrtraders.com:5002"
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="629972f1-796c-4f6b-8d0e-5c6dd8ef6ab2" name="Departo" url="http://164.68.114.110">
+        <fileTransfer host="164.68.114.110" port="22" rootFolder="/root/daparto/daparto/" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
