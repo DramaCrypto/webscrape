@@ -1,0 +1,8 @@
+sqlalchemy
+numpy
+scipy
+requests
+pandas
+bs4
+tqdm
+pymysql

@@ -1,0 +1,29 @@
+
+name: ebay_api_config
+
+# Trading API Sandbox - https://www.x.com/developers/ebay/products/trading-api
+api.sandbox.ebay.com:
+    compatability: 719
+    appid: MaciejJa-ygolegac-SBX-8b31f104d-6208b2c1
+    certid: SBX-b31f104d304e-a260-480d-ac9e-70a1
+    devid: 5af77564-d881-4ef0-925a-fdea190e5bc1
+     token: AgAAAA**AQAAAA**aAAAAA**lcqlXQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wFk4aiCpCDpQ6dj6x9nY+seQ**BRsFAA**AAMAAA**fvvJRdlrsOdaP7GFFjdQtUqtRMxhY/M/UdRVp+Qtp8apdV+/a3/NCAqrSYJS33oxF4WF7gOZpU2ZTHkpG0RdJG2uLl3HVMDVaxOBSqVRbjV8fEz1X/t2h1HWHluAyDS59mDwISzlPz2EOvzI40+P7gk5lrW7vq6k8Meq365UFq8eMeBtsXg+bgT5fgCZbxRo0NzJQhB1lzUA4ZchPaLp+D8AXI5yDdM08C8DXnJof385xmAR0YCzSokoYdDsz/UD6I9Wr6giBAggtVLrI+lI0T9yE0ARbjPP0z0o5irXa4FVR1AQQ/QKrpdks6NeYl1nGwVzlVp25R544KYHOaBJs69khft0iqJnY6yoTCS4iiJ4MvHGuGZf7R3z4XHEMd5Sn3P0qxfC1qDIFfFDmm8XZrqvqBRuKZ/EBt08I566wNBmkyofR009HKOjBLF5Odnd/Y2xkoWck871wg+BzZDvTjiTiad+Lt47rjy7U3lxBZvQVgjcJP57L9YAP4kv3R3MiCcjP+jopbtzn8Zw+xQjH6alvor5BU4Mj+bSEphVvAZkOXBl3VdfuaY/T2SLwQv6AHiUS8WB3Z+THLRKWkWPbnbLJa01CCiX3gEjhUNIM0rLsUm3xjudHcy3Cro5QY9i09SXpcgwW1Pn6Ae7/+TLgYt4moUiPUjKqVEzf0oiA1E0/1fh5jafqKj/nXxCxfxEH94D59Hqbwq3wGfe4UQqax6S5+B3us99R088mrWKG6xZgdZwNhTYAFkc7+kclahx
+
+# Trading API - https://www.x.com/developers/ebay/products/trading-api
+api.ebay.com:
+    siteid: 2
+    compatability: 719
+    appid: MaciejJa-ygolegac-PRD-6b31f104d-42927aaf
+    certid: PRD-b31f104d102a-97bc-4c9a-b2d4-c23a
+    devid: 5af77564-d881-4ef0-925a-fdea190e5bc1
+    token: AgAAAA**AQAAAA**aAAAAA**M9ilXQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wDkoqpC5eCoAudj6x9nY+seQ**yCEGAA**AAMAAA**puJ8nI9HAeHHSFs74j1rj5EhX52lf1CfIX4tlbfEIK2nFkDeD1LLj/yJclP4/LLmOyW7dZbLKXVM8hPc21TVj22mOYOLd0cfYZJKYRu3bS5Ma0zwhms+gMdr/A/GizktklV5x355WvLknkLNttuNJBm+VlV1sGzEsTo4bYj1qM/fxx37VnVHqNnmPV+nCN/M2GLYmkNwu6OgyZpGxZKHz+w/ieNB0W91Dg6y7EIhHMbJVw9WRzyFiWJ0WrlYOh2mcjU9dhWu112XvE3RiYiU4bTbia5GKCkSgV8k48iKj2I+4q0w5EiFG5DOwNGMhFW9sfzQKm3kuDUd7k9HhqT+NoZrsouKnFRPt31FtPWpbQOzXvTnorFATSELZMIrDxMQ0Oq6gbrfNlHDwcfRjgDGGmiCapNMVAD8af+egH05Y01+AKQsrC1B5hJfqzYzl3SvqAFBKiHub+VRcqbaaYPSr5xbAQ5lcTVnK9GSQR0C5QuD21wrCC8A+M5CSkArcKUzmZIl5asXd/TdXU8jzPKTUarc+rJUmDMrEt15lnbNLuPA+KOQv/gLTmLK0CPxsNku2NhgUEr3rdQAUcTVu0vPP/nSy53tSIe1EfKgYGptJCQR7cy0zQUnDthnAe/fdmpYtMkJUDEgAelYUjOMLHm0q87ycDkFJj9o8HuL2Xo8SSA3ufWe/QkC57BLqSGZWizWHlO/cchwW2/zfg/XFkitm68QedVWmtVLW5FirGaLpDc0Ry2xvxejAWpMgrHxR8CH
+
+# Finding API - https://www.x.com/developers/ebay/products/finding-api
+svcs.ebay.com:
+    appid: MaciejJa-ygolegac-PRD-6b31f104d-42927aaf
+    version: 1.0.0
+
+# Shopping API - https://www.x.com/developers/ebay/products/shopping-api
+open.api.ebay.com:
+    appid: ENTER_YOUR_APPID_HERE
+    version: 671
